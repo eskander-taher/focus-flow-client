@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Music, Settings, Play, Pause, History, LogOut, Plus } from "lucide-react";
-import { getMe, AuthUser } from "../utils/auth";
+import { getMe, logout, AuthUser } from "../utils/auth";
 
 
 interface Track {
@@ -250,7 +250,8 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ onShowHistory, onNewSe
 								)}
 								<button
 									onClick={() => {
-										// fire a global event so AuthBar can react and clear user state
+										// clear token and notify app
+										logout();
 										window.dispatchEvent(new Event('auth:logout'));
 										setShowSettings(false);
 										setIsAuthenticated(false);

@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Brain, History, Plus } from "lucide-react";
 import { SessionSetup } from "./components/SessionSetup";
 import { Timer } from "./components/Timer";
 import { SessionComplete } from "./components/SessionComplete";
