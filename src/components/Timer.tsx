@@ -58,10 +58,10 @@ export const Timer: React.FC<TimerProps> = ({ duration, onComplete, onStop }) =>
   };
 
   return (
-    <div className="flex flex-col items-center space-y-8">
+    <div className="flex flex-col items-center space-y-6 sm:space-y-8">
       {/* Circular Progress */}
       <div className="relative">
-        <svg className="w-64 h-64 transform -rotate-90" viewBox="0 0 100 100">
+        <svg className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 transform -rotate-90" viewBox="0 0 100 100">
           <circle
             cx="50"
             cy="50"
@@ -92,10 +92,10 @@ export const Timer: React.FC<TimerProps> = ({ duration, onComplete, onStop }) =>
         
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center">
-            <div className="text-6xl font-bold text-white mb-2">
+            <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-1 sm:mb-2">
               {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
             </div>
-            <div className="text-purple-300 text-lg">
+            <div className="text-purple-300 text-sm sm:text-base lg:text-lg">
               {isRunning ? 'Focus Time' : isPaused ? 'Paused' : 'Ready'}
             </div>
           </div>
@@ -103,35 +103,35 @@ export const Timer: React.FC<TimerProps> = ({ duration, onComplete, onStop }) =>
       </div>
 
       {/* Control Buttons */}
-      <div className="flex space-x-4">
+      <div className="flex space-x-3 sm:space-x-4">
         {!isRunning ? (
           <button
             onClick={startTimer}
-            className="bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 text-white p-4 rounded-full shadow-lg transform hover:scale-105 transition-all duration-200"
+            className="bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 text-white p-3 sm:p-4 rounded-full shadow-lg transform hover:scale-105 transition-all duration-200"
           >
-            <Play size={24} />
+            <Play size={20} className="sm:w-6 sm:h-6" />
           </button>
         ) : (
           <button
             onClick={pauseTimer}
-            className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white p-4 rounded-full shadow-lg transform hover:scale-105 transition-all duration-200"
+            className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white p-3 sm:p-4 rounded-full shadow-lg transform hover:scale-105 transition-all duration-200"
           >
-            <Pause size={24} />
+            <Pause size={20} className="sm:w-6 sm:h-6" />
           </button>
         )}
         
         <button
           onClick={stopTimer}
-          className="bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white p-4 rounded-full shadow-lg transform hover:scale-105 transition-all duration-200"
+          className="bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white p-3 sm:p-4 rounded-full shadow-lg transform hover:scale-105 transition-all duration-200"
         >
-          <Square size={24} />
+          <Square size={20} className="sm:w-6 sm:h-6" />
         </button>
       </div>
 
       {timeLeft === 0 && (
         <div className="flex items-center space-x-2 text-green-400 animate-pulse">
-          <CheckCircle size={24} />
-          <span className="text-lg font-semibold">Session Complete!</span>
+          <CheckCircle size={20} className="sm:w-6 sm:h-6" />
+          <span className="text-base sm:text-lg font-semibold">Session Complete!</span>
         </div>
       )}
     </div>

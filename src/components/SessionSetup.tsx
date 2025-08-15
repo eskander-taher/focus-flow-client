@@ -19,19 +19,19 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ onStart }) => {
   };
 
   return (
-    <div className="max-w-lg mx-auto">
-      <div className="bg-gray-800/50 backdrop-blur-lg rounded-3xl p-8 shadow-2xl border border-purple-500/20">
-        <div className="text-center mb-8">
-          <div className="bg-gradient-to-r from-purple-500 to-cyan-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <Target className="text-white" size={32} />
+    <div className="max-w-sm sm:max-w-md lg:max-w-lg mx-auto px-4 sm:px-0">
+      <div className="bg-gray-800/50 backdrop-blur-lg rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-2xl border border-purple-500/20">
+        <div className="text-center mb-6 sm:mb-8">
+          <div className="bg-gradient-to-r from-purple-500 to-cyan-500 w-12 h-12 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
+            <Target className="text-white" size={24} />
           </div>
-          <h2 className="text-3xl font-bold text-white mb-2">Start New Session</h2>
-          <p className="text-gray-300">Set your focus goal and duration</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">Start New Session</h2>
+          <p className="text-gray-300 text-sm sm:text-base">Set your focus goal and duration</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
           <div>
-            <label className="block text-gray-300 text-sm font-semibold mb-3">
+            <label className="block text-gray-300 text-sm font-semibold mb-2 sm:mb-3">
               Session Goal
             </label>
             <input
@@ -39,16 +39,16 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ onStart }) => {
               value={goal}
               onChange={(e) => setGoal(e.target.value)}
               placeholder="What do you want to accomplish?"
-              className="w-full bg-gray-700/50 border border-gray-600 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+              className="w-full bg-gray-700/50 border border-gray-600 rounded-xl px-3 sm:px-4 py-2 sm:py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base"
               required
             />
           </div>
 
           <div>
-            <label className="block text-gray-300 text-sm font-semibold mb-3">
+            <label className="block text-gray-300 text-sm font-semibold mb-2 sm:mb-3">
               Duration (minutes)
             </label>
-            <div className="grid grid-cols-4 gap-2 mb-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3 sm:mb-4">
               {predefinedDurations.map((mins) => (
                 <button
                   key={mins}

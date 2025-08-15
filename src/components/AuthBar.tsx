@@ -49,43 +49,57 @@ export const AuthBar: React.FC = () => {
 	};
 
 	if (user) {
-		return;
+		return (
+			<div className="flex items-center space-x-3">
+				<span className="text-gray-300 text-sm">Hi, {user.username}</span>
+			</div>
+		);
 	}
 
 	return (
-		<form
-			onSubmit={mode === "login" ? handleLogin : handleRegister}
-			className="flex items-center space-x-2"
-		>
-			<input
-				value={username}
-				onChange={(e) => setUsername(e.target.value)}
-				placeholder="Username"
-				className="bg-gray-700/50 border border-gray-600 rounded-xl px-3 py-2 text-white placeholder-gray-400 text-sm"
-				required
-			/>
-			<input
-				value={password}
-				onChange={(e) => setPassword(e.target.value)}
-				placeholder="Password"
-				type="password"
-				className="bg-gray-700/50 border border-gray-600 rounded-xl px-3 py-2 text-white placeholder-gray-400 text-sm"
-				required
-			/>
-			<button
-				type="submit"
-				className="bg-gray-800/50 hover:bg-gray-700/50 text-gray-300 px-3 py-2 rounded-xl border border-gray-600 text-sm"
+		<div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
+			<form
+				onSubmit={mode === "login" ? handleLogin : handleRegister}
+				className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2 w-full sm:w-auto"
 			>
-				{mode === "login" ? "Login" : "Register"}
-			</button>
-			<button
-				type="button"
-				onClick={() => setMode(mode === "login" ? "register" : "login")}
-				className="text-purple-400 hover:text-purple-300 text-xs"
-			>
-				{mode === "login" ? "Need an account?" : "Have an account?"}
-			</button>
-			{error && <span className="text-red-400 text-xs ml-2">{error}</span>}
-		</form>
+				<div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 w-full sm:w-auto">
+					<input
+						value={username}
+						onChange={(e) => setUsername(e.target.value)}
+						placeholder="Username"
+						className="bg-gray-700/50 border border-gray-600 rounded-xl px-3 py-2 text-white placeholder-gray-400 text-sm w-full sm:w-auto min-w-[120px]"
+						required
+					/>
+					<input
+						value={password}
+						onChange={(e) => setPassword(e.target.value)}
+						placeholder="Password"
+						type="password"
+						className="bg-gray-700/50 border border-gray-600 rounded-xl px-3 py-2 text-white placeholder-gray-400 text-sm w-full sm:w-auto min-w-[120px]"
+						required
+					/>
+				</div>
+				<div className="flex items-center space-x-2 w-full sm:w-auto justify-between sm:justify-start">
+					<button
+						type="submit"
+						className="bg-gray-800/50 hover:bg-gray-700/50 text-gray-300 px-3 py-2 rounded-xl border border-gray-600 text-sm flex-1 sm:flex-none"
+					>
+						{mode === "login" ? "Login" : "Register"}
+					</button>
+					<button
+						type="button"
+						onClick={() => setMode(mode === "login" ? "register" : "login")}
+						className="text-purple-400 hover:text-purple-300 text-xs whitespace-nowrap"
+					>
+						{mode === "login" ? "Need an account?" : "Have an account?"}
+					</button>
+				</div>
+			</form>
+			{error && (
+				<div className="text-red-400 text-xs mt-1 sm:mt-0 sm:ml-2 w-full sm:w-auto">
+					{error}
+				</div>
+			)}
+		</div>
 	);
 };
