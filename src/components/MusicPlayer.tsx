@@ -187,14 +187,6 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ onShowHistory, onNewSe
 			{showSettings && (
 				<div className="absolute right-0 top-full mt-2 w-80 max-w-[90vw] bg-gray-800/90 backdrop-blur-lg rounded-xl p-4 border border-gray-600 shadow-xl z-50">
 					<div className="space-y-4">
-						{user && (
-							<div className="flex items-center justify-between bg-gray-700/40 rounded-lg p-3 border border-gray-600/40">
-								<div className="text-sm text-gray-300">
-									<span className="text-gray-400">Signed in as</span>
-									<span className="ml-2 font-semibold text-white">{user.username}</span>
-								</div>
-							</div>
-						)}
 						<div className="flex items-center space-x-2 mb-4">
 							<Music className="text-purple-400" size={20} />
 							<h3 className="text-white font-semibold">Music Settings</h3>
@@ -238,8 +230,13 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ onShowHistory, onNewSe
 								{onClearHistory && (
 									<button
 										onClick={() => {
-											const input = prompt('Type "remove history" to confirm clearing all sessions');
-											if ((input || '').trim().toLowerCase() === 'remove history') {
+											const input = prompt(
+												'Type "remove history" to confirm clearing all sessions'
+											);
+											if (
+												(input || "").trim().toLowerCase() ===
+												"remove history"
+											) {
 												onClearHistory();
 											}
 										}}
@@ -252,7 +249,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ onShowHistory, onNewSe
 									onClick={() => {
 										// clear token and notify app
 										logout();
-										window.dispatchEvent(new Event('auth:logout'));
+										window.dispatchEvent(new Event("auth:logout"));
 										setShowSettings(false);
 										setIsAuthenticated(false);
 									}}

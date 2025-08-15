@@ -7,7 +7,7 @@ import { MusicPlayer } from "./components/MusicPlayer";
 import { Session, SessionStats } from "./types";
 import { saveSessions, loadSessions, generateId, clearStoredSessions } from "./utils/storage";
 import { AuthBar } from "./components/AuthBar";
-import { getMe } from "./utils/auth";
+import { getMe, AuthUser } from "./utils/auth";
 import {
 	fetchSessions,
 	createSession,
@@ -27,6 +27,7 @@ function App() {
 	const [state, setState] = useState<AppState>("setup");
 	const [sessions, setSessions] = useState<Session[]>([]);
 	const [activeSession, setActiveSession] = useState<ActiveSession | null>(null);
+	const [user, setUser] = useState<AuthUser | null>(null);
 	const [stats, setStats] = useState<SessionStats>({
 		totalSessions: 0,
 		totalTime: 0,
@@ -35,10 +36,11 @@ function App() {
 		completedToday: 0,
 	});
 
-	// Load sessions on mount
+	// Load sessions and user on mount
 	useEffect(() => {
 		(async () => {
 			const me = await getMe();
+			setUser(me);
 			if (me) {
 				try {
 					const serverSessions = await fetchSessions();
@@ -65,6 +67,8 @@ function App() {
 	useEffect(() => {
 		const onLogin = async () => {
 			try {
+				const me = await getMe();
+				setUser(me);
 				const serverSessions = await fetchSessions();
 				setSessions(serverSessions);
 				setStats(calculateStats(serverSessions));
@@ -74,6 +78,7 @@ function App() {
 		};
 		const onLogout = () => {
 			// Clear local sessions to avoid duplication when switching between auth states
+			setUser(null);
 			clearStoredSessions();
 			setSessions([]);
 			setStats(calculateStats([]));
@@ -171,7 +176,7 @@ function App() {
 								<img src="/logo.png" alt="Logo" className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-2xl object-cover" />
 								<div>
 									<h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-white">
-										FocusFlow
+										{user ? `${user.username.toUpperCase()} Flow` : 'UserFlow'}
 									</h1>
 									<p className="text-gray-400 text-xs sm:text-sm">
 										Track your productivity

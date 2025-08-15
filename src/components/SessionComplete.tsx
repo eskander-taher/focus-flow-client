@@ -22,8 +22,8 @@ export const SessionComplete: React.FC<SessionCompleteProps> = ({
 	};
 
 	return (
-		<div className="max-w-lg mx-auto">
-			<div className="bg-gray-800/50 backdrop-blur-lg rounded-3xl p-8 shadow-2xl border border-green-500/20">
+		<div className="max-w-sm sm:max-w-md lg:max-w-lg mx-auto px-4 sm:px-0">
+			<div className="bg-gray-800/50 backdrop-blur-lg rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-2xl border border-green-500/20">
 				<div className="text-center mb-8">
 					<div className="bg-gradient-to-r from-green-500 to-emerald-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 animate-pulse">
 						<CheckCircle className="text-white" size={32} />

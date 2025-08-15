@@ -54,7 +54,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ onStart }) => {
                   key={mins}
                   type="button"
                   onClick={() => setDuration(mins)}
-                  className={`py-2 px-3 rounded-lg text-sm font-semibold transition-all duration-200 ${
+                  className={`py-2 px-2 sm:px-3 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 ${
                     duration === mins
                       ? 'bg-gradient-to-r from-purple-500 to-cyan-500 text-white shadow-lg'
                       : 'bg-gray-700/50 text-gray-300 hover:bg-gray-600/50 border border-gray-600'
@@ -83,9 +83,9 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ onStart }) => {
           <button
             type="submit"
             disabled={!goal.trim()}
-            className="w-full bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 disabled:from-gray-600 disabled:to-gray-600 text-white font-semibold py-4 px-6 rounded-xl shadow-lg transform hover:scale-105 disabled:hover:scale-100 transition-all duration-200 flex items-center justify-center space-x-2"
+            className="w-full bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 disabled:from-gray-600 disabled:to-gray-600 text-white font-semibold py-3 sm:py-4 px-4 sm:px-6 rounded-xl shadow-lg transform hover:scale-105 disabled:hover:scale-100 transition-all duration-200 flex items-center justify-center space-x-2 text-sm sm:text-base"
           >
-            <Timer size={20} />
+            <Timer size={18} className="sm:w-5 sm:h-5" />
             <span>Start Session</span>
           </button>
         </form>
