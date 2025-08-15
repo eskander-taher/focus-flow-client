@@ -30,3 +30,4 @@ export function playAlarmAudio(volume: number = 0.7): void {
 		// ignore
 	}
 }
+

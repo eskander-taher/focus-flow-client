@@ -1,6 +1,9 @@
 import axios from "axios";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+const DEFAULT_PROD_URL = "https://focus-flow-server.vercel.app";
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL ||
+  (import.meta.env.PROD ? DEFAULT_PROD_URL : "http://localhost:5000");
 
 export const api = axios.create({
   baseURL: API_BASE_URL,
@@ -27,5 +30,6 @@ export function setAuthToken(token?: string) {
 export function getAuthToken(): string | null {
   return localStorage.getItem("auth_token");
 }
+
 
 
