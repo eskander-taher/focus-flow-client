@@ -14,6 +14,7 @@ import {
 	clearSessions as apiClearSessions,
 } from "./utils/sessionApi";
 import { calculateStats } from "./utils/stats";
+import { Plus } from "lucide-react";
 
 type AppState = "setup" | "active" | "complete" | "history";
 
